@@ -22,13 +22,28 @@ public class PhysicsMain {
     }
 
     public static void calculators(Scanner in){
-        System.out.println("Choose a calculator: \n\t[S]peed\n\t[D]istance\n\t[T]ime");
-        char choice = in.next().toLowerCase().charAt(0);
+        System.out.println("System.out.println(\"\\nEnter a number to select the equation to solve:\\n\" + //\n" + //
+                   "                     \"  1. Speed\\n\" + //\n" + //
+                      "                  \"  2. Distance\\n\" + //\n" + //
+                         "               \"  3. Time\\n\" + //\n" + //
+                        "                \"  4. Position\\n\" + //\n" + //
+                        "                \"  5. Velocity\\n\" + //\n" + //
+                        "                \"  6. Acceleration\\n\" + //\n" + //
+                        "                \"  7. Projectile Motion in the x-direction\\n\"+//\n" + //
+                        "                \"  8. Projectile Motion in the y-direction\"+//\n" + //
+                                         
+                        "                \"\");\n" );
+         int num = in.nextInt();
         System.out.println();
-        switch(choice) {
-            case 's': speed(in); break;
-            case 'd': distance(in); break;
-            case 't': time(in); break;
+        switch(num) {
+            case 1:speed(in); break;
+            case 2:distance(in); break;
+            case 3:time(in); break;
+            case 4:position(in); break;
+            case 5:velocity (in); break;
+            case 6:acceleration (in); break;
+            case 7:projx(in); break;
+            case 8:projy(in); break;
             //TODO: Add cases for existing calculators
             default: System.out.println("Function not recognized.  Returning to menu."); break;
         }
@@ -59,6 +74,74 @@ public class PhysicsMain {
         double speed = in.nextDouble();
         double time = dist / speed;
         System.out.println("The time during which the object has traveled is " + time + " s.\n");
+    }
+
+    public static void position(Scanner in){
+        System.out.print("Enter initial posiiton: ");
+            double x0 = in.nextDouble();
+        System.out.print("Enter initial velocity: ");
+            double v0 = in.nextDouble();
+        System.out.print("Enter time: ");
+            double t = in.nextDouble();
+        System.out.print("Enter acceleration: ");
+            double a = in.nextDouble();
+        
+        double position = x0 + (v0 * t) + (0.5)*(a)*(t*t);
+        System.out.println("The current position is " + position + " meters \n");
+    }
+
+    public static void velocity(Scanner in){
+                System.out.print("Enter starting position: ");
+            double sx = in.nextDouble();
+        System.out.print("Enter final position: ");
+            double fx = in.nextDouble();
+        System.out.print("Enter starting time: ");
+            double st = in.nextDouble();
+        System.out.print("Enter final time: ");
+            double ft = in.nextDouble(); 
+        
+        double velocity = (fx-sx)/(ft-st);
+        System.out.println("The current velocity is " + velocity + " m/s \n");
+    }
+
+    public static void acceleration(Scanner in){
+            System.out.print("Enter starting velocity: ");
+            double sv = in.nextDouble();
+        System.out.print("Enter final velocity: ");
+            double fv = in.nextDouble();
+        System.out.print("Enter starting time: ");
+            double st = in.nextDouble();
+        System.out.print("Enter final time: ");
+            double ft = in.nextDouble(); 
+        
+        double acceleration = (fv-sv)/(ft-st);
+        System.out.println("The current acceleration is " + acceleration + " m/s\u00B2 \n");
+    }
+
+    public static void projx(Scanner in){
+            System.out.print("Enter initial x position: ");
+            double spx = in.nextDouble();
+        System.out.print("Enter initial velocity in the x direction: ");
+            double svx = in.nextDouble();
+        System.out.print("Enter time: ");
+            double t = in.nextDouble();
+      
+        
+        double projx = (spx +(svx*t));
+        System.out.println("The distance traveled in the x direction is " + projx + " meters \n");
+    }
+
+    public static void projy(Scanner in){
+            System.out.print("Enter initial y position: ");
+            double spy = in.nextDouble();
+        System.out.print("Enter initial velocity in the y direction: ");
+            double svy = in.nextDouble();
+        System.out.print("Enter time: ");
+            double t = in.nextDouble();
+      
+        
+        double projy = (spy + (svy*t)-((0.5)*(-9.8)*(t*t)));
+        System.out.println("The distance traveled in the y direction is " + projy + " meters \n");
     }
 
     public static void tabler(Scanner in) {
