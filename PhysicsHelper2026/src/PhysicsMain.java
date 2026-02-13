@@ -61,7 +61,7 @@ public class PhysicsMain {
         System.out.println("The time during which the object has traveled is " + time + " s.\n");
     }
 
-    public static void bernoulli(Scanner in){
+        public static void bernoulli(Scanner in){
          System.out.print("Enter the pressure at point 2: ");
         double p2 = in.nextDouble();
         System.out.print("Enter the density of the fluid: ");
@@ -92,8 +92,45 @@ public class PhysicsMain {
         System.out.println("The absolute fluid pressure is " + AbsoluteFluid + " pa");
     }
     
-
     
+    public static void AngularMotion(Scanner in){ 
+        else if (num == 4) {//Angular Motion
+        System.out.print("Enter a letter for what you want to solve: \n" +
+            "a. Angular Speed \n" + "b. Angle of Movement \n");
+        char angle = in.next().charAt(0);
+        //Angular Speed
+        if (angle == 'a'){
+            System.out.print("Enter initial angular velocity: ");
+            double InitAVelo = in.nextDouble();
+            System.out.print("Enter angular acceleration: ");
+            double AngVelo = in.nextDouble();
+            System.out.print("Enter the time elapsed: ");
+            double Time = in.nextDouble(); 
+
+            //calculation
+            double AngularSpeed = (InitAVelo + (AngVelo * Time));
+            System.out.println("The angular speed is " + AngularSpeed + " radians per second.");
+        }
+
+        //Angle of Movement 
+        if (angle == 'b'){
+            System.out.print("Enter initial angular position: ");
+            double IAP = in.nextDouble();
+            System.out.print("Enter initial angular velocity: ");
+            double IAV = in.nextDouble();
+            System.out.print("Enter the constant rate of angular acceleration: ");
+            double CRAA = in.nextDouble(); 
+            System.out.print("Enter the time elapsed: ");
+            double Time = in.nextDouble();
+
+            //calculation
+            double AofM = (IAP + (IAV*Time) + (1/2 * CRAA * (Time * Time)));
+            System.out.println("The angle of movement is " + AofM + " degrees.");}
+
+else {System.out.println("Not an option");}
+
+}
+    }
 
     public static void tabler(Scanner in) {
         //TODO: Complete tabler
