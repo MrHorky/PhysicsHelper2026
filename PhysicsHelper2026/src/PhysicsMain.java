@@ -28,7 +28,7 @@ public class PhysicsMain {
         switch(choice) {
             case 's': speed(in); break;
             case 'd': distance(in); break;
-            case 't': time(in); break;
+            case 't': angularChoice(in); break;
             //TODO: Add cases for existing calculators
             default: System.out.println("Function not recognized.  Returning to menu."); break;
         }
@@ -52,13 +52,42 @@ public class PhysicsMain {
         System.out.println("The distance that the object has traveled is " + dist + " m.\n");
     }
 
-    public static void time(Scanner in){
-        System.out.print("Enter a value for distance in meters (m): ");
-        double dist = in.nextDouble();
-        System.out.print("Enter a value for speed in meters per second (m/s): ");
-        double speed = in.nextDouble();
-        double time = dist / speed;
-        System.out.println("The time during which the object has traveled is " + time + " s.\n");
+    public static void angularChoice(Scanner in){
+       System.out.println("Which would you like \n1) Angular Speed \n2) Angular Movement");
+                    int angularChoice = in.nextInt();
+                    switch (angularChoice) {
+                        case 1:
+                            System.out.println("You chose Angular Speed (Ã¢ Âµ = Ã¢ Âµ0 + ÃŽÂ±t) ");
+                    System.out.print("Enter initial Angular Speed (Ã¢ Âµ0): ");
+                    double aS = in.nextDouble();
+
+                    System.out.println("Enter inital Angular Accerleration (ÃŽÂ±):");
+                    double AA = in.nextDouble();
+
+                    System.out.println("Enter inital Time: ");
+                    double T = in.nextDouble();
+
+                    double AS = aS + (AA * T);
+                    System.out.println("Your angular Motion is " +AS);
+
+                    break;
+                        case 2:
+                            System.out.println("You chose Angule of Movement (ÃŽÂ¸ = ÃŽÂ¸0 + Ã¢ Âµ0t + (Ã‚Â½)ÃŽÂ±t^2) ");
+                        System.out.println("Enter inital Angle (ÃŽÂ¸0): ");
+                        double Iangle = in.nextDouble();
+
+                        System.out.println("Enter inital Angular Speed (Ã¢ Âµ0)");
+                        double Aspeed = in.nextDouble();
+
+                        System.out.println("Enter change in time (t): ");
+                        double time = in.nextDouble();
+    
+                        System.out.println("Enter inital Angular Accerleration (ÃŽÂ±):");
+                        double  aA = in.nextDouble();
+
+                        double Amovement = Iangle + (Aspeed*time) + (.5*aA*time*time) ;
+                    System.out.println("Your Angle of Movement is " +Amovement);}
+                    
     }
 
     public static void tabler(Scanner in) {
