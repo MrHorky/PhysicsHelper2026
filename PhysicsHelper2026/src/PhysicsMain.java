@@ -143,6 +143,39 @@ public class PhysicsMain {
         double projy = (spy + (svy*t)-((0.5)*(-9.8)*(t*t)));
         System.out.println("The distance traveled in the y direction is " + projy + " meters \n");
     }
+    public static void bernoulli(Scanner in){
+         System.out.print("Enter the pressure at point 2: ");
+        double p2 = in.nextDouble();
+        System.out.print("Enter the density of the fluid: ");
+        double density = in.nextDouble();
+        System.out.print("Enter the velocity of the fluid at point 1: ");
+        double v1 = in.nextDouble();
+        System.out.print("Enter the velocity of the fluid at point 2: ");
+        double v2 = in.nextDouble();
+        System.out.print("Enter the height of the fluid at point 1: ");
+        double h1 = in.nextDouble();
+        System.out.print("Enter the height of the fluid at point 2: ");
+        double h2 = in.nextDouble();
+
+        double Bernoulli = p2 + (density * 9.8 * h2) + (.5 * (density * (v2 * v2))) - (density * 9.8 * h1) - (0.5 * (density * (v1 * v1)));
+        System.out.println("The value for the pressure at point 1 is " + Bernoulli + " pa");
+
+    }
+
+    public static void absolutefluid(Scanner in){
+        System.out.print("Enter the initial pressure: ");
+        double ip = in.nextDouble();
+        System.out.print("Enter the density of the fluid: ");
+        double df = in.nextDouble();
+        System.out.print("Enter the height of the fluid collumn: ");
+        double fh = in.nextDouble();
+
+        double AbsoluteFluid = ip + (df * 9.8 * fh);
+        System.out.println("The absolute fluid pressure is " + AbsoluteFluid + " pa");
+    }
+    
+
+    
 
     public static void tabler(Scanner in) {
         //TODO: Complete tabler
