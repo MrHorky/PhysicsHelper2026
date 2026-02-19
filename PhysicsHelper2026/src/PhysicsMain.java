@@ -30,8 +30,13 @@ public class PhysicsMain {
                     "5. Velocity \n" + 
                     "6. Acceleration \n" + 
                     "7. Projectile Motion in the x-direction \n" +
-                    "8. Projectile Motion in the y-direction \n" );
-//TODO add luke and morgan's extra calculators to selection and switch statement
+                    "8. Projectile Motion in the y-direction \n" +
+                    "8. Projectile Motion in the y-direction \n"+
+                    "9. Bernoulli \n"+
+                    "10. Absolute Fluid \n"+
+                    "11. Angular Motion \n");
+
+
          int num = in.nextInt();
         System.out.println();
         switch(num) {
@@ -43,10 +48,10 @@ public class PhysicsMain {
             case 6:acceleration (in); break;
             case 7:projx(in); break;
             case 8:projy(in); break;
-            //TODO: Add cases for existing calculators
-            default: System.out.println("Function not recognized.  Returning to menu."); break;
-        }
-    }
+            case 9:bernoulli(in); break;
+            case 10:absolutefluid(in); break;
+            case 11:AngularMotion(in); break;
+            default: System.out.println("Function not recognized.  Returning to menu."); break; }}
 
     public static void speed(Scanner in){
         System.out.print("Enter a value for distance in meters (m): ");
@@ -221,11 +226,14 @@ int table = in.nextInt();
 
 switch(table){
 case 1: VeloTable(in); break;
-case 2: 
-case 3: 
+case 2: ProjMotionTable(in); break;
+case 3: AngleOfMovementTable(in); break;
+//case 2: ProjMotionTable(in); break;
+//case 3: 
 case 4: AirPressTable(in); break;
 }//switch
     }
+
     public static void VeloTable(Scanner in){
 System.out.print("Enter how many seconds you'd like to simulate: ");
 int seconds = in.nextInt();
@@ -251,6 +259,29 @@ for (int i = 0; i <= seconds; i++){
 }//outer
 }
 
+public static void AngleOfMovementTable(Scanner in){
+     System.out.print("Enter initial angular position: ");
+            double IAP = in.nextDouble();
+            System.out.print("Enter initial angular velocity: ");
+            double IAV = in.nextDouble();
+            System.out.print("Enter the constant rate of angular acceleration: ");
+            double CRAA = in.nextDouble(); 
+            System.out.print("Enter the time elapsed: ");
+            double Time = in.nextDouble();
+
+            System.out.println();
+
+            System.out.print("t(s)  |  v(m/s)| \n" + 
+                 "------+-------\n");
+        for (int i = 0; i <= Time; i++) {
+            double AofM = (IAP + (IAV*i) + (1/2 * CRAA * (Time * Time)));
+            System.out.println(" " + i + "    | " + AofM + "  ");
+        }
+
+
+
+}
+
 public static void AirPressTable(Scanner in){
 
     System.out.print("What height (m) do you want to calculate the pressure for?: ");
@@ -274,10 +305,10 @@ public static void AirPressTable(Scanner in){
     System.out.print("At " + dHeight + " the pressure is " + Pressure + " kPa \n");
     System.out.print("Alt.(m)\t| Pressure(kPa) \n" +
                     "--------+-------------- \n");
-    for (int i = 0; i <= dHeight; i += 1000){
+    for (int i = 0; i <= dHeight; i += 1000){//TODO numbers aren't exactly correct but they are close
         x = (-((Gacell * MmDa) * i) / (GasConstant * K));
         double Pressure2 = (dPress * (Math.exp(x)));
-        Pressure2 = (Pressure2/1000) * 1000;
+        
 
         System.out.print(i + "\t|" + Pressure2 + "\n");
     }
@@ -287,4 +318,34 @@ public static void AirPressTable(Scanner in){
 
     
 }
-}//main
+
+    public static void ProjMotionTable(Scanner in){
+    System.out.print("Enter initial x position: ");
+     double spx = in.nextDouble();
+    System.out.print("Enter initial velocity in the x direction: ");
+     double svx = in.nextDouble();
+
+    System.out.print("Enter initial y position: ");
+            double spy = in.nextDouble();
+    System.out.print("Enter initial velocity in the y direction: ");
+            double svy = in.nextDouble();
+
+    System.out.print("Enter time: ");
+            double t = in.nextDouble();
+      
+        
+System.out.println();
+
+System.out.print("  t(s)\t|posit x|posit y \n" + 
+                 "--------+-------+------\n");
+for (int i = 0; i <= t; i++){
+        
+        double projx = (spx +(svx*i));
+        double projy = (spy + (svy*i)-((0.5)*(-9.8)*(i*i)));
+
+    System.out.print(i + "\t|" + projx + "\t|" + 
+        projy); 
+    System.out.println();
+}
+System.out.println();
+}}//main
