@@ -72,17 +72,17 @@ public class PhysicsMain {
 
                     break;
                         case 2:
-                            System.out.println("You chose Angule of Movement (ÃŽÂ¸ = ÃŽÂ¸0 + Ã¢ Âµ0t + (Ã‚Â½)ÃŽÂ±t^2) ");
-                        System.out.println("Enter inital Angle (ÃŽÂ¸0): ");
+                            System.out.println("You chose Angule of Movement (θ = θ0 + ⍵0t + (½)αt^2) ");
+                        System.out.println("Enter inital Angle (θ0): ");
                         double Iangle = in.nextDouble();
 
-                        System.out.println("Enter inital Angular Speed (Ã¢ Âµ0)");
+                        System.out.println("Enter inital Angular Speed (⍵0)");
                         double Aspeed = in.nextDouble();
 
                         System.out.println("Enter change in time (t): ");
                         double time = in.nextDouble();
     
-                        System.out.println("Enter inital Angular Accerleration (ÃŽÂ±):");
+                        System.out.println("Enter inital Angular Accerleration (α):");
                         double  aA = in.nextDouble();
 
                         double Amovement = Iangle + (Aspeed*time) + (.5*aA*time*time) ;
@@ -92,5 +92,20 @@ public class PhysicsMain {
 
     public static void tabler(Scanner in) {
         //TODO: Complete tabler
+        System.out.print("Enter a number of seconds to simulate: ");
+        int seconds = in.nextInt();
+
+        System.out.print("Enter initial acceleration in m/s^2: ");
+        int IA = in.nextInt();
+
+        System.out.print("Enter initial velocity in m/s: ");
+        int IV = in.nextInt();
+
+        System.out.print("Enter Initial Postition in m: ");
+        int IP = in.nextInt();
+
+    //for loop, for every speed 0 - given speed
+    for(int i = 0; i <=0; i++);
+    
     }
 }
