@@ -226,8 +226,8 @@ int table = in.nextInt();
 
 switch(table){
 case 1: VeloTable(in); break;
-case 2: 
-case 3: AngleOfMovementTable(in);
+case 2: ProjMotionTable(in); break;
+case 3: AngleOfMovementTable(in); break;
 //case 2: ProjMotionTable(in); break;
 //case 3: 
 case 4: AirPressTable(in); break;
