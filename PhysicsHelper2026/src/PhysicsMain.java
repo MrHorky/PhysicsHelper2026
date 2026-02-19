@@ -22,17 +22,16 @@ public class PhysicsMain {
     }
 
     public static void calculators(Scanner in){
-        System.out.println("System.out.println(\"\\nEnter a number to select the equation to solve:\\n\" + //\n" + //
-                   "                     \"  1. Speed\\n\" + //\n" + //
-                      "                  \"  2. Distance\\n\" + //\n" + //
-                         "               \"  3. Time\\n\" + //\n" + //
-                        "                \"  4. Position\\n\" + //\n" + //
-                        "                \"  5. Velocity\\n\" + //\n" + //
-                        "                \"  6. Acceleration\\n\" + //\n" + //
-                        "                \"  7. Projectile Motion in the x-direction\\n\"+//\n" + //
-                        "                \"  8. Projectile Motion in the y-direction\"+//\n" + //
-                                         
-                        "                \"\");\n" );
+        System.out.println("Enter a number to select the equation to solve:\n" + 
+                    "1. Speed \n" +
+                    "2. Distance \n" + 
+                    "3. Time \n" + 
+                    "4. Position \n" +
+                    "5. Velocity \n" + 
+                    "6. Acceleration \n" + 
+                    "7. Projectile Motion in the x-direction \n" +
+                    "8. Projectile Motion in the y-direction \n");
+
          int num = in.nextInt();
         System.out.println();
         switch(num) {
@@ -143,6 +142,7 @@ public class PhysicsMain {
         double projy = (spy + (svy*t)-((0.5)*(-9.8)*(t*t)));
         System.out.println("The distance traveled in the y direction is " + projy + " meters \n");
     }
+    
     public static void bernoulli(Scanner in){
          System.out.print("Enter the pressure at point 2: ");
         double p2 = in.nextDouble();
@@ -174,9 +174,8 @@ public class PhysicsMain {
         System.out.println("The absolute fluid pressure is " + AbsoluteFluid + " pa");
     }
     
-    
     public static void AngularMotion(Scanner in){ 
-        else if (num == 4) {//Angular Motion
+        //Angular Motion
         System.out.print("Enter a letter for what you want to solve: \n" +
             "a. Angular Speed \n" + "b. Angle of Movement \n");
         char angle = in.next().charAt(0);
@@ -209,12 +208,58 @@ public class PhysicsMain {
             double AofM = (IAP + (IAV*Time) + (1/2 * CRAA * (Time * Time)));
             System.out.println("The angle of movement is " + AofM + " degrees.");}
 
-else {System.out.println("Not an option");}
-
 }
-    }
+    
 
     public static void tabler(Scanner in) {
-        //TODO: Complete tabler
+System.out.print("What table would you like to create?: \n" +
+    "1. Velocity Table \n" + 
+    "2. X and Y Projectile Table \n" +
+    "3. Angle of Movement Table \n" +
+    "4. Air Pressure Table \n");
+int table = in.nextInt();
+
+switch(table){
+case 1: VeloTable(in); break;
+case 2: 
+case 3: 
+case 4: AirPressTable(in); break;
+}//switch
     }
+    public static void VeloTable(Scanner in){
+System.out.print("Enter how many seconds you'd like to simulate: ");
+int seconds = in.nextInt();
+System.out.print("Enter initial acceleration in m/s^2: ");
+int InitAccel = in.nextInt();
+System.out.print("Enter initial velocity in m/s: ");
+int InitVelo = in.nextInt();
+System.out.print("Enter initial position in m: ");
+int InitPos = in.nextInt();
+
+int CurVelo = InitVelo;
+
+System.out.print("t(s)\t|v(m/s) | x(m) \n" + 
+                 "--------+-------+------\n");
+for (int i = 0; i <= seconds; i++){
+    //for (int j = 0; j <= seconds; j++){
+    CurVelo = (CurVelo + (InitAccel * i));
+        System.out.print(i + "\t|" + (InitVelo + (InitAccel * i)) + "\t|" + 
+        (InitPos + CurVelo)); 
+        
+    //}//inner
+    System.out.println();
+}//outer
 }
+
+public static void AirPressTable(Scanner in){
+
+    double GravAccel = 9.80665;//gravitational acceleration
+    double PressAtSL = 101.325;//pressure at sea level
+    double MMDA = 0;//mean molar mass of dry air at sea level
+    double UHeight = 0;//user desired height
+    double SeaLevel = 0;//height of reference level?
+    double R = 8.31446;//gas constant
+    double RefTemp = 0;//user entered temperature?
+
+}
+}//main
