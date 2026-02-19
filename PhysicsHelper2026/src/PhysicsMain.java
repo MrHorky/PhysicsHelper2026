@@ -6,16 +6,16 @@ public class PhysicsMain {
         boolean choice = true;
         while(choice == true){
             System.out.println("Choose a function: \n\t[C]alculators\n\t[T]able Generator");
-            choice = in.next().toLowerCase().charAt(0);
+            char choicee = in.next().toLowerCase().charAt(0);
             System.out.println();
-            switch(choice) {
+            switch(choicee) {
                 case 'c': calculators(in); break;
                 case 't': tabler(in); break;
                 //TODO: Add cases for other functionalities
-                default: System.out.println("Function not recognized."); choice = 'y'; continue;
+                default: System.out.println("Function not recognized."); continue;
             }
             System.out.println("Would you like to continue? [Y/n]");
-            choice = in.next().toLowerCase().charAt(0);
+            char choiceee = in.next().toLowerCase().charAt(0);
             System.out.println();
         }
         in.close();
@@ -41,33 +41,64 @@ public class PhysicsMain {
     }
 
     public static void speed(Scanner in){
+        boolean cont = true;
         System.out.print("Enter a value for distance in meters (m): ");
         double dist = in.nextDouble();
         System.out.print("Enter a value for time in seconds (s): ");
         double time = in.nextDouble();
         double speed = dist / time;
         System.out.println("The speed of the object is " + speed + " m/s.\n");
+
+        System.out.println("Do you want to continue? Y(yes) or N(no)");
+        String YoN = in.next();
+        if(YoN.equals("Y") == true) {
+            cont = true;
+        }
+        else {
+            cont = false;
+        }
     }
 
     public static void distance(Scanner in){
+        boolean cont = true;
         System.out.print("Enter a value for speed in meters per second (m/s): ");
         double speed = in.nextDouble();
         System.out.print("Enter a value for time in seconds (s): ");
         double time = in.nextDouble();
         double dist = speed * time;
         System.out.println("The distance that the object has traveled is " + dist + " m.\n");
+
+        System.out.println("Do you want to continue? Y(yes) or N(no)");
+        String YoN = in.next();
+        if(YoN.equals("Y") == true) {
+            cont = true;
+        }
+        else {
+            cont = false;
+        }
     }
 
     public static void time(Scanner in){
+        boolean cont = true;
         System.out.print("Enter a value for distance in meters (m): ");
         double dist = in.nextDouble();
         System.out.print("Enter a value for speed in meters per second (m/s): ");
         double speed = in.nextDouble();
         double time = dist / speed;
         System.out.println("The time during which the object has traveled is " + time + " s.\n");
+
+        System.out.println("Do you want to continue? Y(yes) or N(no)");
+        String YoN = in.next();
+        if(YoN.equals("Y") == true) {
+            cont = true;
+        }
+        else {
+            cont = false;
+        }
     }
 
     public static void posCalc(Scanner in) {
+        boolean cont = true;
         System.out.println("Enter the initial velocity for your problem: ");
         int inPos = in.nextInt();
 
@@ -93,6 +124,7 @@ public class PhysicsMain {
         }
     }
     public static void velCalc(Scanner in) {
+        boolean cont = true;
         System.out.println("Enter the change in position for your problem: ");
         int chanPos = in.nextInt();
 
@@ -112,6 +144,7 @@ public class PhysicsMain {
         }
     }
     public static void accelCalc(Scanner in) {
+        boolean cont = true;
         System.out.println("Enter the change in velocity for your problem: ");
         int chanVel = in.nextInt();
 
@@ -131,6 +164,7 @@ public class PhysicsMain {
         }
     }
     public static void projCalc(Scanner in) {
+        boolean cont = true;
         //CRIS'S CODE - slightly edited to fit in this code smoothly.
         System.out.println("Do you want to solve for motion in the x-direction or y-direction?" + "\n" + "1. Motion in x-direction" + "\n" + "2. Motion in y-direction");
         int shape = in.nextInt();
@@ -170,6 +204,7 @@ public class PhysicsMain {
         }
     }
      public static void angCalc(Scanner in) {
+        boolean cont = true;
         //CASSIE'S CODE - slightly edited to fit in this code smoothly.
         System.out.println("Which problem do you want to solve: " + "\n" + "1. Angular speed" + "\n" + "2. Angle of movement");
         int equation = in.nextInt();
@@ -205,6 +240,7 @@ public class PhysicsMain {
         }
     }
     public static void fluidCalc (Scanner in) {
+        boolean cont = true;
         //DYLAN'S CODE
         System.out.println("Which problem do you want to solve: " + "\n" + "1. Absolute fluid pressure" + "\n" + "2. Bernoulii's equation");
         int inDecide = in.nextInt();
