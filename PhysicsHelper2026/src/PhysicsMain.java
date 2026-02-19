@@ -28,7 +28,9 @@ public class PhysicsMain {
         switch(choice) {
             case 's': speed(in); break;
             case 'd': distance(in); break;
-            case 't': angularChoice(in); break;
+            case 't': time(in); break;
+            case 'p': projectilemotion(in); break;
+            //case 't': angularChoice(in); break;
             //TODO: Add cases for existing calculators
             default: System.out.println("Function not recognized.  Returning to menu."); break;
         }
@@ -89,7 +91,30 @@ public class PhysicsMain {
                     System.out.println("Your Angle of Movement is " +Amovement);}
                     
     }
-
+    public static void projectilemotion(Scanner in) {
+    System.out.println("Would you like to  calculate projectile motion for the x or y?(x/y)"); 
+    char choice = in.nextln();
+    if (choice == 'x') {
+    System.out.println("Enter initial x position: ");
+     int xi = in.nextInt();
+     System.out.println("Enter initial x velocity: ");
+     int xv = in.nextInt();
+     System.out.println("Enter current x time:");
+     int tx = in.nextInt();
+     int x = xi+ (xv*tx);
+    System.out.println("The motion in the x-direction is: "+x+".");}
+    else if (choice == 'y') {
+     System.out.println("Enter initial y position: ");
+     int yi = in.nextInt();
+     System.out.println("Enter initial y velocity: ");
+     int yv = in.nextInt();
+     System.out.println("Enter current y time: ");
+     int yt = in.nextInt();
+     System.out.println("Enter the force of gravity applied: ");
+     int g = in.nextInt();
+     double y = yi+ (yv*yt)-.5*(g*(yt*yt));
+     System.out.println("Motion in the y-direction: "+y+".");}}
+    
     public static void tabler(Scanner in) {
         //TODO: Complete tabler
         System.out.print("Enter a number of seconds to simulate: ");
