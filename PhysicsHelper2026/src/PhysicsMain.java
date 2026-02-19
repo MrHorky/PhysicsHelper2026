@@ -205,6 +205,8 @@ public class PhysicsMain {
             double Time = in.nextDouble();
 
             //calculation
+
+
             double AofM = (IAP + (IAV*Time) + (1/2 * CRAA * (Time * Time)));
             System.out.println("The angle of movement is " + AofM + " degrees.");}
 
@@ -222,7 +224,7 @@ int table = in.nextInt();
 switch(table){
 case 1: VeloTable(in); break;
 case 2: 
-case 3: 
+case 3: AngleOfMovementTable(in);
 case 4: AirPressTable(in); break;
 }//switch
     }
@@ -249,6 +251,29 @@ for (int i = 0; i <= seconds; i++){
     //}//inner
     System.out.println();
 }//outer
+}
+
+public static void AngleOfMovementTable(Scanner in){
+     System.out.print("Enter initial angular position: ");
+            double IAP = in.nextDouble();
+            System.out.print("Enter initial angular velocity: ");
+            double IAV = in.nextDouble();
+            System.out.print("Enter the constant rate of angular acceleration: ");
+            double CRAA = in.nextDouble(); 
+            System.out.print("Enter the time elapsed: ");
+            double Time = in.nextDouble();
+
+            System.out.println();
+
+            System.out.print("t(s)  |  v(m/s)| \n" + 
+                 "------+-------\n");
+        for (int i = 0; i <= Time; i++) {
+            double AofM = (IAP + (IAV*i) + (1/2 * CRAA * (Time * Time)));
+            System.out.println(" " + i + "    | " + AofM + "  ");
+        }
+
+
+
 }
 
 public static void AirPressTable(Scanner in){
