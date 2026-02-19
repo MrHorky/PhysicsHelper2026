@@ -30,7 +30,10 @@ public class PhysicsMain {
                     "5. Velocity \n" + 
                     "6. Acceleration \n" + 
                     "7. Projectile Motion in the x-direction \n" +
-                    "8. Projectile Motion in the y-direction \n");
+                    "8. Projectile Motion in the y-direction \n"+
+                    "9. Bernoulli \n"+
+                    "10. Absolute Fluid \n"+
+                    "11. Angular Motion \n");
 
          int num = in.nextInt();
         System.out.println();
