@@ -43,12 +43,12 @@ public class PhysicsMain {
             case 6:acceleration (in); break;
             case 7:projx(in); break;
             case 8:projy(in); break;
-            //TODO: Add cases for existing calculators
-            default: System.out.println("Function not recognized.  Returning to menu."); break;
-        }
-    }
+            case 9:bernoulli(in); break;
+            case 10:absolutefluid(in); break;
+            case 11:AngularMotion(in); break;
+            default: System.out.println("Function not recognized.  Returning to menu."); break; }}
 
-    public static void speed(Scanner in){
+        public static void speed(Scanner in){
         System.out.print("Enter a value for distance in meters (m): ");
         double dist = in.nextDouble();
         System.out.print("Enter a value for time in seconds (s): ");
@@ -57,7 +57,7 @@ public class PhysicsMain {
         System.out.println("The speed of the object is " + speed + " m/s.\n");
     }
 
-    public static void distance(Scanner in){
+        public static void distance(Scanner in){
         System.out.print("Enter a value for speed in meters per second (m/s): ");
         double speed = in.nextDouble();
         System.out.print("Enter a value for time in seconds (s): ");
@@ -66,7 +66,7 @@ public class PhysicsMain {
         System.out.println("The distance that the object has traveled is " + dist + " m.\n");
     }
 
-    public static void time(Scanner in){
+        public static void time(Scanner in){
         System.out.print("Enter a value for distance in meters (m): ");
         double dist = in.nextDouble();
         System.out.print("Enter a value for speed in meters per second (m/s): ");
@@ -75,7 +75,7 @@ public class PhysicsMain {
         System.out.println("The time during which the object has traveled is " + time + " s.\n");
     }
 
-    public static void position(Scanner in){
+        public static void position(Scanner in){
         System.out.print("Enter initial posiiton: ");
             double x0 = in.nextDouble();
         System.out.print("Enter initial velocity: ");
@@ -89,7 +89,7 @@ public class PhysicsMain {
         System.out.println("The current position is " + position + " meters \n");
     }
 
-    public static void velocity(Scanner in){
+        public static void velocity(Scanner in){
                 System.out.print("Enter starting position: ");
             double sx = in.nextDouble();
         System.out.print("Enter final position: ");
@@ -103,7 +103,7 @@ public class PhysicsMain {
         System.out.println("The current velocity is " + velocity + " m/s \n");
     }
 
-    public static void acceleration(Scanner in){
+        public static void acceleration(Scanner in){
             System.out.print("Enter starting velocity: ");
             double sv = in.nextDouble();
         System.out.print("Enter final velocity: ");
@@ -117,7 +117,7 @@ public class PhysicsMain {
         System.out.println("The current acceleration is " + acceleration + " m/s\u00B2 \n");
     }
 
-    public static void projx(Scanner in){
+        public static void projx(Scanner in){
             System.out.print("Enter initial x position: ");
             double spx = in.nextDouble();
         System.out.print("Enter initial velocity in the x direction: ");
@@ -130,7 +130,7 @@ public class PhysicsMain {
         System.out.println("The distance traveled in the x direction is " + projx + " meters \n");
     }
 
-    public static void projy(Scanner in){
+        public static void projy(Scanner in){
             System.out.print("Enter initial y position: ");
             double spy = in.nextDouble();
         System.out.print("Enter initial velocity in the y direction: ");
@@ -143,7 +143,7 @@ public class PhysicsMain {
         System.out.println("The distance traveled in the y direction is " + projy + " meters \n");
     }
     
-    public static void bernoulli(Scanner in){
+        public static void bernoulli(Scanner in){
          System.out.print("Enter the pressure at point 2: ");
         double p2 = in.nextDouble();
         System.out.print("Enter the density of the fluid: ");
@@ -162,7 +162,7 @@ public class PhysicsMain {
 
     }
 
-    public static void absolutefluid(Scanner in){
+        public static void absolutefluid(Scanner in){
         System.out.print("Enter the initial pressure: ");
         double ip = in.nextDouble();
         System.out.print("Enter the density of the fluid: ");
@@ -174,7 +174,7 @@ public class PhysicsMain {
         System.out.println("The absolute fluid pressure is " + AbsoluteFluid + " pa");
     }
     
-    public static void AngularMotion(Scanner in){ 
+        public static void AngularMotion(Scanner in){ 
         //Angular Motion
         System.out.print("Enter a letter for what you want to solve: \n" +
             "a. Angular Speed \n" + "b. Angle of Movement \n");
@@ -206,12 +206,12 @@ public class PhysicsMain {
 
             //calculation
             double AofM = (IAP + (IAV*Time) + (1/2 * CRAA * (Time * Time)));
-            System.out.println("The angle of movement is " + AofM + " degrees.");}
-
-}
+            System.out.println("The angle of movement is " + AofM + " degrees.");}}
     
 
-    public static void tabler(Scanner in) {
+    
+    
+public static void tabler(Scanner in) {
 System.out.print("What table would you like to create?: \n" +
     "1. Velocity Table \n" + 
     "2. X and Y Projectile Table \n" +
@@ -226,6 +226,7 @@ case 3:
 case 4: AirPressTable(in); break;
 }//switch
     }
+
     public static void VeloTable(Scanner in){
 System.out.print("Enter how many seconds you'd like to simulate: ");
 int seconds = in.nextInt();
@@ -251,7 +252,7 @@ for (int i = 0; i <= seconds; i++){
 }//outer
 }
 
-public static void AirPressTable(Scanner in){
+    public static void AirPressTable(Scanner in){
 
     double GravAccel = 9.80665;//gravitational acceleration
     double PressAtSL = 101.325;//pressure at sea level
@@ -263,7 +264,7 @@ public static void AirPressTable(Scanner in){
 
 }
 
-public static void ProjMotionTable(Scanner in){
+    public static void ProjMotionTable(Scanner in){
     System.out.print("Enter initial x position: ");
      double spx = in.nextDouble();
     System.out.print("Enter initial velocity in the x direction: ");
