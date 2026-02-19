@@ -36,6 +36,11 @@ public class PhysicsMain {
             case 4: FluidPressure(in); break;
             case 5: AngularMotion(in); break;
             // case 6: ProjectileMotion(in); break;
+            case 's': speed(in); break;
+            case 'd': distance(in); break;
+            case 't': time(in); break;
+            case 'p': projectilemotion(in); break;
+            //case 't': angularChoice(in); break;
             //TODO: Add cases for existing calculators
             default: System.out.println("Function not recognized.  Returning to menu."); break;
         }
@@ -103,17 +108,17 @@ public class PhysicsMain {
 
                     break;
                         case 2:
-                            System.out.println("You chose Angule of Movement (ÃŽÂ¸ = ÃŽÂ¸0 + Ã¢ Âµ0t + (Ã‚Â½)ÃŽÂ±t^2) ");
-                        System.out.println("Enter inital Angle (ÃŽÂ¸0): ");
+                            System.out.println("You chose Angule of Movement (θ = θ0 + ⍵0t + (½)αt^2) ");
+                        System.out.println("Enter inital Angle (θ0): ");
                         double Iangle = in.nextDouble();
 
-                        System.out.println("Enter inital Angular Speed (Ã¢ Âµ0)");
+                        System.out.println("Enter inital Angular Speed (⍵0)");
                         double Aspeed = in.nextDouble();
 
                         System.out.println("Enter change in time (t): ");
                         double time = in.nextDouble();
     
-                        System.out.println("Enter inital Angular Accerleration (ÃŽÂ±):");
+                        System.out.println("Enter inital Angular Accerleration (α):");
                         double  aA = in.nextDouble();
 
                         double Amovement = Iangle + (Aspeed*time) + (.5*aA*time*time) ;
@@ -156,8 +161,48 @@ public class PhysicsMain {
             default: System.out.println("Function not recognized. Returning to menu."); break;
             
         }}
+    }
+    public static void projectilemotion(Scanner in) {
+    System.out.println("Would you like to  calculate projectile motion for the x or y?(x/y)"); 
+    char choice = in.nextln();
+    if (choice == 'x') {
+    System.out.println("Enter initial x position: ");
+     int xi = in.nextInt();
+     System.out.println("Enter initial x velocity: ");
+     int xv = in.nextInt();
+     System.out.println("Enter current x time:");
+     int tx = in.nextInt();
+     int x = xi+ (xv*tx);
+    System.out.println("The motion in the x-direction is: "+x+".");}
+    else if (choice == 'y') {
+     System.out.println("Enter initial y position: ");
+     int yi = in.nextInt();
+     System.out.println("Enter initial y velocity: ");
+     int yv = in.nextInt();
+     System.out.println("Enter current y time: ");
+     int yt = in.nextInt();
+     System.out.println("Enter the force of gravity applied: ");
+     int g = in.nextInt();
+     double y = yi+ (yv*yt)-.5*(g*(yt*yt));
+     System.out.println("Motion in the y-direction: "+y+".");}}
+    
     public static void tabler(Scanner in) {
         //TODO: Complete tabler
+        System.out.print("Enter a number of seconds to simulate: ");
+        int seconds = in.nextInt();
+
+        System.out.print("Enter initial acceleration in m/s^2: ");
+        int IA = in.nextInt();
+
+        System.out.print("Enter initial velocity in m/s: ");
+        int IV = in.nextInt();
+
+        System.out.print("Enter Initial Postition in m: ");
+        int IP = in.nextInt();
+
+    //for loop, for every speed 0 - given speed
+    for(int i = 0; i <=0; i++);
+    
     }
     // random practice problems generator
     public static void PracticeProblems(Scanner in) {
