@@ -221,7 +221,7 @@ int table = in.nextInt();
 
 switch(table){
 case 1: VeloTable(in); break;
-case 2: 
+case 2: ProjMotionTable(in); break;
 case 3: 
 case 4: AirPressTable(in); break;
 }//switch
@@ -262,4 +262,34 @@ public static void AirPressTable(Scanner in){
     double RefTemp = 0;//user entered temperature?
 
 }
-}//main
+
+public static void ProjMotionTable(Scanner in){
+    System.out.print("Enter initial x position: ");
+     double spx = in.nextDouble();
+    System.out.print("Enter initial velocity in the x direction: ");
+     double svx = in.nextDouble();
+
+    System.out.print("Enter initial y position: ");
+            double spy = in.nextDouble();
+    System.out.print("Enter initial velocity in the y direction: ");
+            double svy = in.nextDouble();
+
+    System.out.print("Enter time: ");
+            double t = in.nextDouble();
+      
+        
+System.out.println();
+
+System.out.print("  t(s)\t|posit x|posit y \n" + 
+                 "--------+-------+------\n");
+for (int i = 0; i <= t; i++){
+        
+        double projx = (spx +(svx*i));
+        double projy = (spy + (svy*i)-((0.5)*(-9.8)*(i*i)));
+
+    System.out.print(i + "\t|" + projx + "\t|" + 
+        projy); 
+    System.out.println();
+}
+System.out.println();
+}}//main
