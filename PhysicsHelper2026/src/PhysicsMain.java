@@ -1,16 +1,20 @@
 import java.util.Scanner;
+import java.util.Random;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class PhysicsMain {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         char choice = 'y';
         while(choice == 'y'){
-            System.out.println("Choose a function: \n\t[C]alculators\n\t[T]able Generator");
+            System.out.println("Choose a function: \n\t[C]alculators\n\t[T]able Generator \n\t[P]Practice Problems");
             choice = in.next().toLowerCase().charAt(0);
             System.out.println();
             switch(choice) {
                 case 'c': calculators(in); break;
                 case 't': tabler(in); break;
+                case 'p': PracticeProblems(in); break;
                 //TODO: Add cases for other functionalities
                 default: System.out.println("Function not recognized."); choice = 'y'; continue;
             }
@@ -31,7 +35,7 @@ public class PhysicsMain {
             case 3: Acceleration(in); break;
             case 4: FluidPressure(in); break;
             case 5: AngularMotion(in); break;
-            case 6: ProjectileMotion(in); break;
+            // case 6: ProjectileMotion(in); break;
             //TODO: Add cases for existing calculators
             default: System.out.println("Function not recognized.  Returning to menu."); break;
         }
@@ -79,6 +83,43 @@ public class PhysicsMain {
         System.out.println("The calculated acceleration is: " + acceleration + ".");
     }
 
+    public static void AngularMotion(Scanner in){
+       System.out.println("Which would you like \n1) Angular Speed \n2) Angular Movement");
+                    int angularChoice = in.nextInt();
+                    switch (angularChoice) {
+                        case 1:
+                            System.out.println("You chose Angular Speed (Ã¢ Âµ = Ã¢ Âµ0 + ÃŽÂ±t) ");
+                    System.out.print("Enter initial Angular Speed (Ã¢ Âµ0): ");
+                    double aS = in.nextDouble();
+
+                    System.out.println("Enter inital Angular Accerleration (ÃŽÂ±):");
+                    double AA = in.nextDouble();
+
+                    System.out.println("Enter inital Time: ");
+                    double T = in.nextDouble();
+
+                    double AS = aS + (AA * T);
+                    System.out.println("Your angular Motion is " +AS);
+
+                    break;
+                        case 2:
+                            System.out.println("You chose Angule of Movement (ÃŽÂ¸ = ÃŽÂ¸0 + Ã¢ Âµ0t + (Ã‚Â½)ÃŽÂ±t^2) ");
+                        System.out.println("Enter inital Angle (ÃŽÂ¸0): ");
+                        double Iangle = in.nextDouble();
+
+                        System.out.println("Enter inital Angular Speed (Ã¢ Âµ0)");
+                        double Aspeed = in.nextDouble();
+
+                        System.out.println("Enter change in time (t): ");
+                        double time = in.nextDouble();
+    
+                        System.out.println("Enter inital Angular Accerleration (ÃŽÂ±):");
+                        double  aA = in.nextDouble();
+
+                        double Amovement = Iangle + (Aspeed*time) + (.5*aA*time*time) ;
+                        System.out.println("Your Angle of Movement is " +Amovement);}}
+                    
+
     public static void FluidPressure(Scanner in){
         System.out.println("Enter which type of Fluid Pressure calculation to perform:\n1) Absolute fluid pressure \n2) Bernoulli’s equation");
         int FluidChoice = in.nextInt();
@@ -117,5 +158,118 @@ public class PhysicsMain {
         }}
     public static void tabler(Scanner in) {
         //TODO: Complete tabler
+    }
+    // random practice problems generator
+    public static void PracticeProblems(Scanner in) {
+        System.out.println("What type of practice problem would you like? \n1)Position \n2)Velocity \n3)Acceleration");
+        int choice = in.nextInt();
+        Random rand = new Random();
+        switch(choice) {
+            case 1:
+                System.out.println("You chose: Position");
+                ArrayList<Double> positionProblems = new ArrayList<>();
+                double x0 = Math.round(rand.nextDouble() * 100.0) / 10.0;
+                double v0 = Math.round(rand.nextDouble() * 100.0) / 10.0;
+                double t = Math.round(rand.nextDouble() * 100.0) / 10.0;
+                double a = Math.round(rand.nextDouble() * 100.0) / 10.0;
+
+                ArrayList<String> variables = new ArrayList<>();
+                variables.add("x0");
+                variables.add("v0");
+                variables.add("t");
+                variables.add("a");
+
+                positionProblems.add(x0);
+                positionProblems.add(v0);
+                positionProblems.add(t);
+                positionProblems.add(a);
+
+                int randIndex = rand.nextInt(positionProblems.size()); // randomly select which variable will be the answer
+
+                double Answer = positionProblems.get(randIndex);        // get the value of the answer variable
+                System.out.println("Find the value of " + variables.get(randIndex) + " given the following: ");
+                for (int i = 0; i < positionProblems.size(); i++) {     // loop through the variables and print out the ones that are not the answer
+                    if (i != randIndex) {                               // skip the variable that is the answer
+                        System.out.println(variables.get(i) + " = " + positionProblems.get(i));
+
+                    }
+                }  System.out.println("Enter your answer: ");
+                double userAnswer = in.nextDouble();
+                if (userAnswer == Answer) {
+                    System.out.println("Correct!");
+                } else {
+                    System.out.println("Incorrect. The correct answer is: " + Answer);
+                }
+                break;
+
+        
+        case 2:
+            System.out.println("You chose: Velocity");
+            ArrayList<Double> velocityProblems = new ArrayList<>();
+            double xf = Math.round(rand.nextDouble() * 100.0) / 10.0;
+            double v0v = Math.round(rand.nextDouble() * 100.0) / 10.0;
+            double tF = Math.round(rand.nextDouble() * 100.0) / 10.0;
+            double t0 = Math.round(rand.nextDouble() * 100.0) / 10.0;
+
+            ArrayList<String> variablesV = new ArrayList<>();
+            variablesV.add("xf");
+            variablesV.add("v0");
+            variablesV.add("tF");
+            variablesV.add("t0");
+
+            velocityProblems.add(xf);
+            velocityProblems.add(v0v);
+            velocityProblems.add(tF);
+            velocityProblems.add(t0);
+            int randIndexV = rand.nextInt(velocityProblems.size()); // randomly select which variable will be the answer
+            double AnswerV = velocityProblems.get(randIndexV);        // get the value of the answer variable
+            System.out.println("Find the value of " + variablesV.get(randIndexV) + " given the following: ");
+            for (int i = 0; i < velocityProblems.size(); i++) {     // loop through the variables and print out the ones that are not the answer
+                if (i != randIndexV) {                               // skip the variable that is the answer
+                    System.out.println(variablesV.get(i) + " = " + velocityProblems.get(i));
+                }
+            }  System.out.println("Enter your answer: ");
+            double userAnswerV = in.nextDouble();
+            if (userAnswerV == AnswerV) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println("Incorrect. The correct answer is: " + AnswerV);
+            }
+            break;
+        case 3:
+            System.out.println("You chose: Acceleration");
+            ArrayList<Double> accelerationProblems = new ArrayList<>();
+            double vf = Math.round(rand.nextDouble() * 100.0) / 10.0;
+            double v0a = Math.round(rand.nextDouble() * 100.0) / 10.0;
+            double tFa = Math.round(rand.nextDouble() * 100.0) / 10.0;
+            double t0a = Math.round(rand.nextDouble() * 100.0) / 10.0;
+
+            ArrayList<String> variablesA = new ArrayList<>();
+            variablesA.add("vf");
+            variablesA.add("v0");
+            variablesA.add("tF");
+            variablesA.add("t0");
+
+            accelerationProblems.add(vf);
+            accelerationProblems.add(v0a);
+            accelerationProblems.add(tFa);
+            accelerationProblems.add(t0a);
+            int randIndexA = rand.nextInt(accelerationProblems.size()); // randomly select which variable will be the answer
+            double AnswerA = accelerationProblems.get(randIndexA);        // get the value of the answer variable
+            System.out.println("Find the value of " + variablesA.get(randIndexA) + " given the following: ");
+            for (int i = 0; i < accelerationProblems.size(); i++) {     // loop through the variables and print out the ones that are not the answer
+                if (i != randIndexA) {                               // skip the variable that is the answer
+                    System.out.println(variablesA.get(i) + " = " + accelerationProblems.get(i));
+                }
+            }  System.out.println("Enter your answer: ");
+            double userAnswerA = in.nextDouble();
+            if (userAnswerA == AnswerA) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println("Incorrect. The correct answer is: " + AnswerA);
+            }
+            break;
+        default: System.out.println("Function not recognized. Returning to menu."); break;
+        }
     }
 }
