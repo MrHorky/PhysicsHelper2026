@@ -30,8 +30,8 @@ public class PhysicsMain {
                     "5. Velocity \n" + 
                     "6. Acceleration \n" + 
                     "7. Projectile Motion in the x-direction \n" +
-                    "8. Projectile Motion in the y-direction \n");
-
+                    "8. Projectile Motion in the y-direction \n" );
+//TODO add luke and morgan's extra calculators to selection and switch statement
          int num = in.nextInt();
         System.out.println();
         switch(num) {
@@ -253,13 +253,38 @@ for (int i = 0; i <= seconds; i++){
 
 public static void AirPressTable(Scanner in){
 
-    double GravAccel = 9.80665;//gravitational acceleration
-    double PressAtSL = 101.325;//pressure at sea level
-    double MMDA = 0;//mean molar mass of dry air at sea level
-    double UHeight = 0;//user desired height
-    double SeaLevel = 0;//height of reference level?
-    double R = 8.31446;//gas constant
-    double RefTemp = 0;//user entered temperature?
+    System.out.print("What height (m) do you want to calculate the pressure for?: ");
+    double dHeight = in.nextDouble(); //user desired height
+    //double H = dHeight/1000; //for the 'for' loop 
+    System.out.print("Enter desired pressure at reference height (kPa) (if it is sea level, enter 0): ");
+    double dPress = in.nextDouble(); //desired pressure
+    if (dPress == 0){dPress = 101.325;}
 
+    double Gacell = 9.80665; //gravitational acceleration
+    double MmDa = 0.02896; //molar mass of dry air (kg/mol)
+    double GasConstant = 8.31432; //gas constant
+    System.out.print("Enter desired temperature in Kelvin (K): "); //temperature
+    double K = in.nextDouble();
+    
+    double x = (-((Gacell * MmDa) * dHeight) / (GasConstant * K));
+    System.out.println(x);
+    System.out.println(dPress);
+    double Pressure = (dPress * (Math.exp(x)));
+
+    System.out.print("At " + dHeight + " the pressure is " + Pressure + " kPa \n");
+    System.out.print("Alt.(m)\t| Pressure(kPa) \n" +
+                    "--------+-------------- \n");
+    for (int i = 0; i <= dHeight; i += 1000){
+        x = (-((Gacell * MmDa) * i) / (GasConstant * K));
+        double Pressure2 = (dPress * (Math.exp(x)));
+        Pressure2 = (Pressure2/1000) * 1000;
+
+        System.out.print(i + "\t|" + Pressure2 + "\n");
+    }
+    System.out.print(dHeight + "\t|" + Pressure + "\n");
+        
+
+
+    
 }
 }//main
