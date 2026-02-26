@@ -5,12 +5,14 @@ public class PhysicsMain {
         Scanner in = new Scanner(System.in);
         char choice = 'y';
         while(choice == 'y'){
-            System.out.println("Choose a function: \n\t[C]alculators\n\t[T]able Generator");
+            System.out.println("Choose a function: \n\t[C]alculators\n\t[T]able Generator \n\t[P]Projectile Motion Tabler");
             choice = in.next().toLowerCase().charAt(0);
             System.out.println();
             switch(choice) {
                 case 'c': calculators(in); break;
                 case 't': tabler(in); break;
+                case 'p': ProjectilemotionTabler(in);break;
+                //case "p": ProjectilemotionTabler(in); break;
                 //TODO: Add cases for other functionalities
                 default: System.out.println("Function not recognized."); choice = 'y'; continue;
             }
@@ -116,6 +118,7 @@ public class PhysicsMain {
      System.out.println("Motion in the y-direction: "+y+".");}}
     
     public static void tabler(Scanner in) {
+        //System.out.println("Choose your table: \n1) Velocity and Position \n2) x and y \n3) Angle of Movement \n4)Air Pressure");
         //TODO: Complete tabler
         System.out.print("Enter a number of seconds to simulate: ");
         int seconds = in.nextInt();
@@ -126,11 +129,73 @@ public class PhysicsMain {
         System.out.print("Enter initial velocity in m/s: ");
         int IV = in.nextInt();
 
-        System.out.print("Enter Initial Postition in m: ");
+        System.out.print("Enter Initial Position in m: ");
         int IP = in.nextInt();
 
+        int CurV = IV;
     //for loop, for every speed 0 - given speed
-    for(int i = 0; i <=0; i++);
+    System.out.println("t(s)|\tv(m/s)|\tx(m)\n" +
+                "----+-------+----\n");
     
-    }
+    for(int i = 0; i <= seconds; i++)
+     { CurV = (CurV + (IA * i));
+        System.out.println(i+ "|\t" +(CurV) +"|\t" + (IP + CurV));}//(.5  * IA * (i*i) )) );
+        //CurV = v0 + a * t
+        //x = x0 + CurV * t
+
+        //x₀ + v₀t + (½)at²
+     }
+
+
+    public static void ProjectilemotionTabler(Scanner in){
+//Motion in the x-direction: x = x0 + v0xt
+//Motion in the y-direction: y = y0 + v0yt − (½)gt2
+    System.out.print("Enter a time: ");
+ int t = in.nextInt();
+        System.out.print("Enter an initial Position");
+    int IP = in.nextInt();
+        System.out.print("Enter initial Velocity for x: ");
+    int IVX = in.nextInt();
+        System.out.print("Enter initial y velocity: ");
+    int y0 = in.nextInt();
+        System.out.print("Enter initial Velocity for y: ");
+    int IVY = in.nextInt();
+    System.out.println("time|   x distance  | y distance\n" +
+                "----+-----------+----");
+         for (int i = 0; i <= t; i++){
+
+            double xD = IP + IVX * i;
+            double yD = y0 + IVY* i - (.5) * (-9.8/*How to know what gravity is, input gravity  */) * (i * i);
+            System.out.println(i +"   " + "|\t" +xD+  "\t|" + yD);
+    }}
+    
+    
+    
+    public static void Movementtabeler(Scanner in){
+System.out.println("You chose Angule of Movement (θ = θ0 + ⍵0t + (½)αt^2) ");
+                        System.out.println("Enter inital Angle (θ0): ");
+                        double Iangle = in.nextDouble();
+
+                        System.out.println("Enter inital Angular Speed (⍵0)");
+                        double Aspeed = in.nextDouble();
+
+                        System.out.println("Enter change in time (t): ");
+                        double time = in.nextDouble();
+    
+                        System.out.println("Enter inital Angular Accerleration (α):");
+                        double  aA = in.nextDouble();
+
+                        double Amovement = Iangle + (Aspeed*time) + (.5*aA*time*time) ;
+                    System.out.println("Your Angle of Movement is " +Amovement);
+
+                    for(int i = 0;i <= time; i++ ){
+                    System.out.println("\"time| Speed  | angle of movement \\n\" +\n"+
+                                                "----+-----------+----");
+                    System.out.println(i + "\t" + Aspeed + "\t" + Amovement);
+
+                    }
+
+    
+ }
+
 }
