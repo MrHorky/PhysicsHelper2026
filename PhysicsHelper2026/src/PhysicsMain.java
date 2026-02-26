@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class PhysicsMain {
     public static void main(String[] args){
@@ -346,6 +347,81 @@ for (int i = 0; i <= t; i++){
     System.out.print(i + "\t|" + projx + "\t|" + 
         projy); 
     System.out.println();
+}}
+
+public static void AccelPrac(Scanner in) {
+    Random rand = new Random();
+
+
+    double v1 = rand.nextInt(20);
+    double v2 = rand.nextInt(20);
+    double t1 = rand.nextInt(20)+1;
+    double t2 = rand.nextInt(20)+1;
+    double correct = 0;
+
+    int solve = rand.nextInt(5);//random variable to solve for
+    double a = (v2-v1) / (t2-t1);
+
+    if (solve == 0){
+        correct = a;
+        System.out.printf("v1 = %.2f, v2 = %.2f, t1 = %.2f, t2 = %.2f\n",v1, v2, t1, t2);
+        System.out.println("Solve for a: ");
+
+        int guess = in.nextInt();
+    
+        if (correct == guess){System.out.println("Correct!");}
+        else{System.out.println("Incorrect!");}}
+
+
+
+    else if (solve == 1){
+        correct = v1;
+        System.out.printf("a = %.2f, v2 = %.2f, t1 = %.2f, t2 = %.2f\n",a, v2, t1, t2);
+        System.out.println("Solve for v1: ");
+
+        int guess = in.nextInt();
+    
+        if (correct == guess){System.out.println("Correct!");}
+        else{System.out.println("Incorrect!");}}
+
+
+
+    else if (solve == 2){
+        correct = v2;
+        System.out.printf("a = %.2f, v1 = %.2f, t1 = %.2f, t2 = %.2f\n",a, v1, t1, t2);
+        System.out.println("Solve for v2: ");
+
+        int guess = in.nextInt();
+    
+        if (correct == guess){System.out.println("Correct!");}
+        else{System.out.println("Incorrect!");}}
+
+
+
+    else if (solve == 3){
+        correct = t1;
+        System.out.printf("a = %.2f, v1 = %.2f, v2 = %.2f, t2 = %.2f\n",a, v1, v2, t2);
+        System.out.println("Solve for a: ");
+
+        int guess = in.nextInt();
+    
+        if (correct == guess){System.out.println("Correct!");}
+        else{System.out.println("Incorrect!");}}
+
+
+
+    else if (solve == 4){
+        correct = t2;
+        System.out.printf("a = %.2f, v1 = %.2f, v2 = %.2f, t1 = %.2f\n",a, v1, v2, t1);
+        System.out.println("Solve for t: ");
+
+        int guess = in.nextInt();
+    
+        if (correct == guess){System.out.println("Correct!");}
+        else{System.out.println("Incorrect!");}}
+
+
+    else{System.out.println();}
+    
 }
-System.out.println();
-}}//main
+}//main
