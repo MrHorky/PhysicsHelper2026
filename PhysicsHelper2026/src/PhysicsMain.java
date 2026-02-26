@@ -1,10 +1,15 @@
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Random;
+<<<<<<< HEAD
+import java.util.ArrayList;
+=======
 
+>>>>>>> c2658f2a93764404ae2caafe6fc841f9fd78a8bc
 public class PhysicsMain {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
+        //Random random = new Random();
         char choice = 'y';
         while(choice == 'y'){
             System.out.println("Choose a function: \n\t[C]alculators\n\t[T]able Generator\n\t[P]ractice Problems");
@@ -14,7 +19,10 @@ public class PhysicsMain {
                 case 'c': calculators(in); break;
                 case 't': tabler(in); break;
                 case 'p': practice(in); break;
+<<<<<<< HEAD
+=======
 
+>>>>>>> c2658f2a93764404ae2caafe6fc841f9fd78a8bc
                 //TODO: Add cases for other functionalities
                 default: System.out.println("Function not recognized."); choice = 'y'; continue;
             }
@@ -218,7 +226,6 @@ public class PhysicsMain {
             System.out.println("The angle of movement is " + AofM + " degrees.");}
 
 }
-    
 
     public static void tabler(Scanner in) {
 System.out.print("What table would you like to create?: \n" +
@@ -317,12 +324,9 @@ public static void AirPressTable(Scanner in){
         System.out.print(i + "\t|" + Pressure2 + "\n");
     }
     System.out.print(dHeight + "\t|" + Pressure + "\n");
-        
-
-
-    
+           
 }
-//THIS IS A TEST
+
     public static void ProjMotionTable(Scanner in){
     System.out.print("Enter initial x position: ");
      double spx = in.nextDouble();
@@ -871,6 +875,81 @@ public static void AirPressTable(Scanner in){
       
         
 System.out.println();
+<<<<<<< HEAD
+}//main
+
+public static void practice(Scanner in){
+    System.out.print("What type of problem would you like to solve?\n 1. Position \n 2. Velocity \n 3. Acceleration\n");
+    int practice = in.nextInt();
+    switch(practice){
+        case 1: //positionPrac(in); break;
+        case 2: VeloPrac(in); break;
+        case 3: //AccelPrac(in); break;
+    }
+}
+
+public static void VeloPrac(Scanner in){
+    Random random = new Random();
+    ArrayList <String> variables = new ArrayList<String>();
+        variables.add("Velocity");//0
+        variables.add("Δt"); //1
+         variables.add("Δx"); //2
+        //System.out.println(variables); //test
+
+    double CPos = 0;
+    double CTime = 0;
+    
+
+
+    int VSolve = random.nextInt(0,3);
+    //System.out.println(VSolve); //test
+
+    if(VSolve == 0){//velocity
+        CPos = random.nextInt(0,21);
+        CTime = random.nextInt(0,21);
+        double A = (CPos/CTime);
+        //System.out.println(A);
+
+        System.out.printf("Δx = %.2f   Δt = %.2f \n",CPos, CTime);
+        System.out.println("What is the velocity (round to 2 decimal points)?");
+        double UserA = in.nextDouble();
+
+        if(UserA == A){System.out.println("Correct!");}
+        else{System.out.println("That is incorrect...");}
+    }
+
+    else if(VSolve == 1){ // Δt
+        CPos = random.nextInt(0,21);
+        CTime = random.nextInt(0,21);
+        double velo = (CPos/CTime);
+        double A = (CPos/velo);
+        //System.out.println(A);
+
+        System.out.printf("Δx = %.2f   Velocity = %.2f \n", CPos, velo);
+        System.out.println("What is Δt (round to 2 decimal points)?");
+        double UserA = in.nextDouble();
+        
+        if(UserA == A){System.out.println("Correct!");}
+        else{System.out.println("That is incorrect...");}
+    }
+
+    else if(VSolve == 2){//Δx
+        CPos = random.nextInt(0,21);
+        CTime = random.nextInt(0,21);
+
+        double velo = (CPos/CTime);
+        double A = (velo*CTime);
+        //System.out.println(A);
+
+        System.out.printf("Δt = %.2f   Velocity = %.2f \n", CTime, velo);
+        System.out.println("What is Δx (round to 2 decimal points)?");
+        double UserA = in.nextDouble();
+
+        if(UserA == A){System.out.println("Correct!");}
+        else{System.out.println("That is incorrect...");}
+    }
+}
+=======
 
 System.out.print("  t(s)\t|posit x|posit y \n" + 
                  "--------+-------+------\n");
@@ -899,8 +978,15 @@ System.out.println();}
     
 
 
+>>>>>>> c2658f2a93764404ae2caafe6fc841f9fd78a8bc
 
 
 
 
+<<<<<<< HEAD
+
+}//class
+
+=======
  */
+>>>>>>> c2658f2a93764404ae2caafe6fc841f9fd78a8bc
