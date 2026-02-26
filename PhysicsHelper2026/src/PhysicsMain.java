@@ -1,10 +1,12 @@
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Random;
+import java.util.ArrayList;
 
 public class PhysicsMain {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
+        //Random random = new Random();
         char choice = 'y';
         while(choice == 'y'){
             System.out.println("Choose a function: \n\t[C]alculators\n\t[T]able Generator\n\t[P]ractice Problems");
@@ -218,7 +220,6 @@ public class PhysicsMain {
             System.out.println("The angle of movement is " + AofM + " degrees.");}
 
 }
-    
 
     public static void tabler(Scanner in) {
 System.out.print("What table would you like to create?: \n" +
@@ -317,12 +318,9 @@ public static void AirPressTable(Scanner in){
         System.out.print(i + "\t|" + Pressure2 + "\n");
     }
     System.out.print(dHeight + "\t|" + Pressure + "\n");
-        
-
-
-    
+           
 }
-//THIS IS A TEST
+
     public static void ProjMotionTable(Scanner in){
     System.out.print("Enter initial x position: ");
      double spx = in.nextDouble();
@@ -350,6 +348,20 @@ for (int i = 0; i <= t; i++){
     System.out.print(i + "\t|" + projx + "\t|" + 
         projy); 
     System.out.println();
+}}
+
+public static void practice(Scanner in) {
+
+    System.out.println("What type of problem would you like to solve?\n" + 
+                "1. Position (x = x₀ + v₀t + (½)at²)\n" + 
+                "2. Velocity\n" + 
+                "3. Acceleration\n" + 
+                "");
+int practice = in.nextInt();
+switch(practice){
+case 1: positionPrac(in); break;
+case 2: VeloPrac(in); break;
+case 3: AccelPrac(in); break;
 }}
 
 public static void AccelPrac(Scanner in) {
@@ -460,22 +472,6 @@ String unit = in.nextLine();
     else{System.out.println();}
     
 }
-//main
-//System.out.println();
-
-
-public static void practice(Scanner in) {
-
-    System.out.println("What type of problem would you like to solve?\n" + //
-                "1. Position (x = x₀ + v₀t + (½)at²)\n" + //
-                "2. Velocity\n" + //
-                "3. Acceleration\n" + //
-                "");
-int practice = in.nextInt();
-switch(practice){
-case 1: positionPrac(in); break;
-case 3: AccelPrac(in); break;
-}}
 
 public static void positionPrac(Scanner in) {
     Random rand = new Random();
@@ -486,18 +482,26 @@ public static void positionPrac(Scanner in) {
     double t = rand.nextInt(20)+1;
     double a = rand.nextInt(20);
     double correct = 0;
+    
 
     int solve = rand.nextInt(5);//random variable to solve for
     double x = x0 + (v0 * t) + (0.5)*(a)*(t*t);
 
     if (solve == 0){
         correct = x;
+        
         System.out.printf("x0 = %.2f, v0 = %.2f, t = %.2f, a = %.2f\n",x0, v0, t, a);
         System.out.println("Solve for x: ");
 
         int guess = in.nextInt();
+        String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+    if (correct == guess)
+            {if(unit.equals(" m")||unit.equals(" meters")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -508,8 +512,14 @@ public static void positionPrac(Scanner in) {
         System.out.println("Solve for x₀: ");
 
         int guess = in.nextInt();
+        String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+        if (correct == guess)
+            {if(unit.equals(" m")||unit.equals(" meters")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -520,8 +530,14 @@ public static void positionPrac(Scanner in) {
         System.out.println("Solve for v₀: ");
 
         int guess = in.nextInt();
+        String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+        if (correct == guess)
+            {if(unit.equals(" m/s")||unit.equals(" meters/second")||unit.equals(" meters/sec")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m/s)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -532,8 +548,14 @@ public static void positionPrac(Scanner in) {
         System.out.println("Solve for a: ");
 
         int guess = in.nextInt();
+        String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+        if (correct == guess)
+            {if(unit.equals(" m/s^2")||unit.equals(" m/s²")||unit.equals(" meters/seconds²")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m/s²)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -545,362 +567,129 @@ public static void positionPrac(Scanner in) {
 
         int guess = in.nextInt();
     
-        if (correct == guess){System.out.println("Correct!");}
+        String unit = in.nextLine();
+    
+        if (correct == guess)
+            {if(unit.equals(" s")||unit.equals(" sec")||unit.equals(" seconds")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (s)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
     else{System.out.println();}
     }
 
+public static void VeloPrac(Scanner in){
+    Random random = new Random();
+    ArrayList <String> variables = new ArrayList<String>();
+        variables.add("Velocity");//0
+        variables.add("Δt"); //1
+         variables.add("Δx"); //2
+        //System.out.println(variables); //test
+
+    double CPos = 0.00;
+    double CTime = 0.00;
+    double A = 0.00;
+    double UserA = 0.00;
+    String units = "";
 
 
+    int VSolve = random.nextInt(0,3);
+    //System.out.println(VSolve); //test
 
+    if(VSolve == 0){//velocity
+        CPos = random.nextDouble(0,21);
+        CPos = (Math.round(CPos*1000)/1000.000);
+        CTime = random.nextDouble(0,21);
+        CTime = (Math.round(CTime*1000)/1000.000);
+        A = (CPos/CTime);
+        A = (Math.round(A*1000)) / 1000.000;//round
 
+        //tests
+        // System.out.println(A);
+        // System.out.println(CPos);
+        // System.out.println(CTime);
+        
 
+        System.out.printf("Δx = %.3f   Δt = %.3f \n",CPos, CTime);
+        System.out.println("What is the velocity (round to 3 decimal points and include units)?");
+        UserA = in.nextDouble();
+        units = in.nextLine();
+
+        if(UserA == A){
+            if(units.equals(" m/s") || units.equals(" meters per second") ){
+                System.out.println("Correct!");}
+        else{System.out.println("Correct, missing units (m/s)...");}
+    }
+    else{System.out.println("Incorrect...");}
+}
+
+    else if(VSolve == 1){ // Δt
+        CPos = random.nextDouble(0,21);
+        CPos = (Math.round(CPos*1000)/1000.000);
+        CTime = random.nextDouble(0,21);
+        CTime = (Math.round(CTime*1000)/1000.000);
+        double velo = (CPos/CTime);
+        velo = (Math.round(velo*1000)/1000.000);
+        A = (CPos/velo);
+        A = (Math.round(A*1000))/1000.000;//round
+
+        //test
+        // System.out.println(A);
+        // System.out.println(CPos);
+        // System.out.println(CTime);
+        // System.out.println(velo);
+
+        System.out.printf("Δx = %.3f   Velocity = %.3f \n", CPos, velo);
+        System.out.println("What is Δt (round to 3 decimal points and includes units)?");
+        UserA = in.nextDouble();
+        units = in.nextLine();
+
+        
+        if(UserA == A){
+            if(units.equals(" s") || units.equals(" sec") || units.equals(" seconds")){
+                System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (s)");} 
+    }
+    else{System.out.println("That is incorrect...");}
+}
+
+    else if(VSolve == 2){//Δx
+        CPos = random.nextDouble(0,21);
+        CPos = (Math.round(CPos*1000)/1000.000);
+        CTime = random.nextDouble(0,21);
+        CTime = (Math.round(CTime*1000)/1000.000);
+        double velo = (CPos/CTime);
+        velo = (Math.round(velo*1000)/1000.000);
+        A = (velo*CTime);
+        A = (Math.round(A*1000)) / 1000.000;//round
+
+        //tests
+        // System.out.println(A);
+        // System.out.println(CPos);
+        // System.out.println(CTime);
+        // System.out.println(velo);
+        
+
+        System.out.printf("Δt = %.3f   Velocity = %.3f \n", CTime, velo);
+        System.out.println("What is Δx (round to 3 decimal points and include units)?");
+        UserA = in.nextDouble();
+        units = in.nextLine();
+
+        if(UserA == A){
+            if(units.equals(" m") || units.equals(" meters")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m)");}
+        }
+        else{System.out.println("That is incorrect...");}
+    }
 }//main
 
-/*import java.util.Scanner;
-import java.util.Random;
-
-public class PhysicsMain {
-    public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
-        char choice = 'y';
-        while(choice == 'y'){
-            choice = in.next().toLowerCase().charAt(0);
-            System.out.println();
-            switch(choice) {
-                case 'c': calculators(in); break;
-                case 't': tabler(in); break;
-                //TODO: Add cases for other functionalities
-                default: System.out.println("Function not recognized."); choice = 'y'; continue;
-            }
-            System.out.println("Would you like to continue? [Y/n]");
-            choice = in.next().toLowerCase().charAt(0);
-            System.out.println();
-        }
-        in.close();
-    }
-
-    public static void calculators(Scanner in){
-        System.out.println("Enter a number to select the equation to solve:\n" + 
-                    "1. Speed \n" +
-                    "2. Distance \n" + 
-                    "3. Time \n" + 
-                    "4. Position \n" +
-                    "5. Velocity \n" + 
-                    "6. Acceleration \n" + 
-                    "7. Projectile Motion in the x-direction \n" +
-                    "8. Projectile Motion in the y-direction \n"+
-                    "9. Bernoulli \n"+
-                    "10. Absolute Fluid \n"+
-                    "11. Angular Motion \n");
-
-         int num = in.nextInt();
-        System.out.println();
-        switch(num) {
-            case 1:speed(in); break;
-            case 2:distance(in); break;
-            case 3:time(in); break;
-            case 4:position(in); break;
-            case 5:velocity (in); break;
-            case 6:acceleration (in); break;
-            case 7:projx(in); break;
-            case 8:projy(in); break;
-            case 9:bernoulli(in); break;
-            case 10:absolutefluid(in); break;
-            case 11:AngularMotion(in); break;
-            default: System.out.println("Function not recognized.  Returning to menu."); break; }}
-
-        public static void speed(Scanner in){
-        System.out.print("Enter a value for distance in meters (m): ");
-        double dist = in.nextDouble();
-        System.out.print("Enter a value for time in seconds (s): ");
-        double time = in.nextDouble();
-        double speed = dist / time;
-        System.out.println("The speed of the object is " + speed + " m/s.\n");
-    }
-
-        public static void distance(Scanner in){
-        System.out.print("Enter a value for speed in meters per second (m/s): ");
-        double speed = in.nextDouble();
-        System.out.print("Enter a value for time in seconds (s): ");
-        double time = in.nextDouble();
-        double dist = speed * time;
-        System.out.println("The distance that the object has traveled is " + dist + " m.\n");
-    }
-
-        public static void time(Scanner in){
-        System.out.print("Enter a value for distance in meters (m): ");
-        double dist = in.nextDouble();
-        System.out.print("Enter a value for speed in meters per second (m/s): ");
-        double speed = in.nextDouble();
-        double time = dist / speed;
-        System.out.println("The time during which the object has traveled is " + time + " s.\n");
-    }
-
-        public static void position(Scanner in){
-        System.out.print("Enter initial posiiton: ");
-            double x0 = in.nextDouble();
-        System.out.print("Enter initial velocity: ");
-            double v0 = in.nextDouble();
-        System.out.print("Enter time: ");
-            double t = in.nextDouble();
-        System.out.print("Enter acceleration: ");
-            double a = in.nextDouble();
-        
-        double position = x0 + (v0 * t) + (0.5)*(a)*(t*t);
-        System.out.println("The current position is " + position + " meters \n");
-    }
-
-        public static void velocity(Scanner in){
-                System.out.print("Enter starting position: ");
-            double sx = in.nextDouble();
-        System.out.print("Enter final position: ");
-            double fx = in.nextDouble();
-        System.out.print("Enter starting time: ");
-            double st = in.nextDouble();
-        System.out.print("Enter final time: ");
-            double ft = in.nextDouble(); 
-        
-        double velocity = (fx-sx)/(ft-st);
-        System.out.println("The current velocity is " + velocity + " m/s \n");
-    }
-
-        public static void acceleration(Scanner in){
-            System.out.print("Enter starting velocity: ");
-            double sv = in.nextDouble();
-        System.out.print("Enter final velocity: ");
-            double fv = in.nextDouble();
-        System.out.print("Enter starting time: ");
-            double st = in.nextDouble();
-        System.out.print("Enter final time: ");
-            double ft = in.nextDouble(); 
-        
-        double acceleration = (fv-sv)/(ft-st);
-        System.out.println("The current acceleration is " + acceleration + " m/s\u00B2 \n");
-    }
-
-        public static void projx(Scanner in){
-            System.out.print("Enter initial x position: ");
-            double spx = in.nextDouble();
-        System.out.print("Enter initial velocity in the x direction: ");
-            double svx = in.nextDouble();
-        System.out.print("Enter time: ");
-            double t = in.nextDouble();
-      
-        
-        double projx = (spx +(svx*t));
-        System.out.println("The distance traveled in the x direction is " + projx + " meters \n");
-    }
-
-        public static void projy(Scanner in){
-            System.out.print("Enter initial y position: ");
-            double spy = in.nextDouble();
-        System.out.print("Enter initial velocity in the y direction: ");
-            double svy = in.nextDouble();
-        System.out.print("Enter time: ");
-            double t = in.nextDouble();
-      
-        
-        double projy = (spy + (svy*t)-((0.5)*(-9.8)*(t*t)));
-        System.out.println("The distance traveled in the y direction is " + projy + " meters \n");
-    }
-    
-        public static void bernoulli(Scanner in){
-         System.out.print("Enter the pressure at point 2: ");
-        double p2 = in.nextDouble();
-        System.out.print("Enter the density of the fluid: ");
-        double density = in.nextDouble();
-        System.out.print("Enter the velocity of the fluid at point 1: ");
-        double v1 = in.nextDouble();
-        System.out.print("Enter the velocity of the fluid at point 2: ");
-        double v2 = in.nextDouble();
-        System.out.print("Enter the height of the fluid at point 1: ");
-        double h1 = in.nextDouble();
-        System.out.print("Enter the height of the fluid at point 2: ");
-        double h2 = in.nextDouble();
-
-        double Bernoulli = p2 + (density * 9.8 * h2) + (.5 * (density * (v2 * v2))) - (density * 9.8 * h1) - (0.5 * (density * (v1 * v1)));
-        System.out.println("The value for the pressure at point 1 is " + Bernoulli + " pa");
-
-    }
-
-        public static void absolutefluid(Scanner in){
-        System.out.print("Enter the initial pressure: ");
-        double ip = in.nextDouble();
-        System.out.print("Enter the density of the fluid: ");
-        double df = in.nextDouble();
-        System.out.print("Enter the height of the fluid collumn: ");
-        double fh = in.nextDouble();
-
-        double AbsoluteFluid = ip + (df * 9.8 * fh);
-        System.out.println("The absolute fluid pressure is " + AbsoluteFluid + " pa");
-    }
-    
-        public static void AngularMotion(Scanner in){ 
-        //Angular Motion
-        System.out.print("Enter a letter for what you want to solve: \n" +
-            "a. Angular Speed \n" + "b. Angle of Movement \n");
-        char angle = in.next().charAt(0);
-        //Angular Speed
-        if (angle == 'a'){
-            System.out.print("Enter initial angular velocity: ");
-            double InitAVelo = in.nextDouble();
-            System.out.print("Enter angular acceleration: ");
-            double AngVelo = in.nextDouble();
-            System.out.print("Enter the time elapsed: ");
-            double Time = in.nextDouble(); 
-
-            //calculation
-            double AngularSpeed = (InitAVelo + (AngVelo * Time));
-            System.out.println("The angular speed is " + AngularSpeed + " radians per second.");
-        }
-
-        //Angle of Movement 
-        if (angle == 'b'){
-            System.out.print("Enter initial angular position: ");
-            double IAP = in.nextDouble();
-            System.out.print("Enter initial angular velocity: ");
-            double IAV = in.nextDouble();
-            System.out.print("Enter the constant rate of angular acceleration: ");
-            double CRAA = in.nextDouble(); 
-            System.out.print("Enter the time elapsed: ");
-            double Time = in.nextDouble();
-
-            //calculation
-
-
-            double AofM = (IAP + (IAV*Time) + (1/2 * CRAA * (Time * Time)));
-            System.out.println("The angle of movement is " + AofM + " degrees.");}}
-    
-
-    
-    
-public static void tabler(Scanner in) {
-System.out.print("What table would you like to create?: \n" +
-    "1. Velocity Table \n" + 
-    "2. X and Y Projectile Table \n" +
-    "3. Angle of Movement Table \n" +
-    "4. Air Pressure Table \n");
-int table = in.nextInt();
-
-switch(table){
-case 1: VeloTable(in); break;
-case 2: ProjMotionTable(in); break;
-case 3: AngleOfMovementTable(in);
-//case 2: ProjMotionTable(in); break;
-//case 3: 
-case 4: AirPressTable(in); break;
-}//switch
-    }
-
-    public static void VeloTable(Scanner in){
-System.out.print("Enter how many seconds you'd like to simulate: ");
-int seconds = in.nextInt();
-System.out.print("Enter initial acceleration in m/s^2: ");
-int InitAccel = in.nextInt();
-System.out.print("Enter initial velocity in m/s: ");
-int InitVelo = in.nextInt();
-System.out.print("Enter initial position in m: ");
-int InitPos = in.nextInt();
-
-int CurVelo = InitVelo;
-
-System.out.print("t(s)\t|v(m/s) | x(m) \n" + 
-                 "--------+-------+------\n");
-for (int i = 0; i <= seconds; i++){
-    //for (int j = 0; j <= seconds; j++){
-    CurVelo = (CurVelo + (InitAccel * i));
-        System.out.print(i + "\t|" + (InitVelo + (InitAccel * i)) + "\t|" + 
-        (InitPos + CurVelo)); 
-        
-    //}//inner
-    System.out.println();
-}//outer
-}
-
-public static void AngleOfMovementTable(Scanner in){
-     System.out.print("Enter initial angular position: ");
-            double IAP = in.nextDouble();
-            System.out.print("Enter initial angular velocity: ");
-            double IAV = in.nextDouble();
-            System.out.print("Enter the constant rate of angular acceleration: ");
-            double CRAA = in.nextDouble(); 
-            System.out.print("Enter the time elapsed: ");
-            double Time = in.nextDouble();
-
-            System.out.println();
-
-            System.out.print("t(s)  |  v(m/s)| \n" + 
-                 "------+-------\n");
-        for (int i = 0; i <= Time; i++) {
-            double AofM = (IAP + (IAV*i) + (1/2 * CRAA * (Time * Time)));
-            System.out.println(" " + i + "    | " + AofM + "  ");
-        }
 
 
 
-}
-
-public static void AirPressTable(Scanner in){
-
-    double GravAccel = 9.80665;//gravitational acceleration
-    double PressAtSL = 101.325;//pressure at sea level
-    double MMDA = 0;//mean molar mass of dry air at sea level
-    double UHeight = 0;//user desired height
-    double SeaLevel = 0;//height of reference level?
-    double R = 8.31446;//gas constant
-    double RefTemp = 0;//user entered temperature?
-
-}
-
-    public static void ProjMotionTable(Scanner in){
-    System.out.print("Enter initial x position: ");
-     double spx = in.nextDouble();
-    System.out.print("Enter initial velocity in the x direction: ");
-     double svx = in.nextDouble();
-
-    System.out.print("Enter initial y position: ");
-            double spy = in.nextDouble();
-    System.out.print("Enter initial velocity in the y direction: ");
-            double svy = in.nextDouble();
-
-    System.out.print("Enter time: ");
-            double t = in.nextDouble();
-      
-        
-System.out.println();
-
-System.out.print("  t(s)\t|posit x|posit y \n" + 
-                 "--------+-------+------\n");
-for (int i = 0; i <= t; i++){
-        
-        double projx = (spx +(svx*i));
-        double projy = (spy + (svy*i)-((0.5)*(-9.8)*(i*i)));
-
-    System.out.print(i + "\t|" + projx + "\t|" + 
-        projy); 
-    System.out.println();
-}
-System.out.println();}
+}//class
 
 
-
-
-
-
-
-
-        }//main
-        
-
-         
-    
-
-
-
-
-
-
- */
