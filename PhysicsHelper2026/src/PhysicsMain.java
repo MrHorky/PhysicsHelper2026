@@ -449,18 +449,26 @@ public static void positionPrac(Scanner in) {
     double t = rand.nextInt(20)+1;
     double a = rand.nextInt(20);
     double correct = 0;
+    
 
     int solve = rand.nextInt(5);//random variable to solve for
     double x = x0 + (v0 * t) + (0.5)*(a)*(t*t);
 
     if (solve == 0){
         correct = x;
+        
         System.out.printf("x0 = %.2f, v0 = %.2f, t = %.2f, a = %.2f\n",x0, v0, t, a);
         System.out.println("Solve for x: ");
 
         int guess = in.nextInt();
+        String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+    if (correct == guess)
+            {if(unit.equals(" m")||unit.equals(" meters")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -471,8 +479,14 @@ public static void positionPrac(Scanner in) {
         System.out.println("Solve for x₀: ");
 
         int guess = in.nextInt();
+        String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+        if (correct == guess)
+            {if(unit.equals(" m")||unit.equals(" meters")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -483,8 +497,14 @@ public static void positionPrac(Scanner in) {
         System.out.println("Solve for v₀: ");
 
         int guess = in.nextInt();
+        String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+        if (correct == guess)
+            {if(unit.equals(" m/s")||unit.equals(" meters/second")||unit.equals(" meters/sec")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m/s)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -495,8 +515,14 @@ public static void positionPrac(Scanner in) {
         System.out.println("Solve for a: ");
 
         int guess = in.nextInt();
+        String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+        if (correct == guess)
+            {if(unit.equals(" m/s^2")||unit.equals(" m/s²")||unit.equals(" meters/seconds²")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m/s²)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -508,7 +534,14 @@ public static void positionPrac(Scanner in) {
 
         int guess = in.nextInt();
     
-        if (correct == guess){System.out.println("Correct!");}
+        String unit = in.nextLine();
+    
+        if (correct == guess)
+            {if(unit.equals(" s")||unit.equals(" sec")||unit.equals(" seconds")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (s)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
