@@ -371,8 +371,14 @@ public static void AccelPrac(Scanner in) {
         System.out.println("Solve for a: ");
 
         int guess = in.nextInt();
+        String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+    if (correct == guess)
+            {if(unit.equals(" m/s^2")||unit.equals(" meters/second^2")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m/s^2)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -383,9 +389,17 @@ public static void AccelPrac(Scanner in) {
         System.out.println("Solve for v1: ");
 
         int guess = in.nextInt();
+        
+        String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+    if (correct == guess)
+            {if(unit.equals(" m/s")||unit.equals(" meters/second")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m/s)");}}
+
+
         else{System.out.println("Incorrect!");}}
+        
 
 
 
@@ -396,7 +410,14 @@ public static void AccelPrac(Scanner in) {
 
         int guess = in.nextInt();
     
-        if (correct == guess){System.out.println("Correct!");}
+        String unit = in.nextLine();
+    
+    if (correct == guess)
+            {if(unit.equals(" m/s")||unit.equals(" meters/second")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (m/s)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -407,8 +428,14 @@ public static void AccelPrac(Scanner in) {
         System.out.println("Solve for t1: ");
 
         int guess = in.nextInt();
+String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+    if (correct == guess)
+            {if(unit.equals(" s")||unit.equals(" seconds")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (s)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
@@ -419,8 +446,14 @@ public static void AccelPrac(Scanner in) {
         System.out.println("Solve for t2: ");
 
         int guess = in.nextInt();
+String unit = in.nextLine();
     
-        if (correct == guess){System.out.println("Correct!");}
+    if (correct == guess)
+            {if(unit.equals(" s")||unit.equals(" seconds")){
+            System.out.println("Correct!");}
+            else{System.out.println("Correct, missing units (s)");}}
+
+
         else{System.out.println("Incorrect!");}}
 
 
