@@ -2,6 +2,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Random;
 import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class PhysicsMain {
     public static void main(String[] args){
